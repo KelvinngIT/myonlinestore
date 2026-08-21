@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CashBack Store – Shop & Earn</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <span class="logo-icon">🛍️</span>
+        <span class="logo-text">CashBack<span class="highlight">Store</span></span>
+      </div>
+      <nav class="nav">
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#how-it-works" class="nav-link">How it Works</a>
+      </nav>
+      <button class="cart-btn" id="cartBtn">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Shop Online. Earn Cashback. Settle Payment Instantly.</h1>
+      <p>Browse curated products, add to cart, and complete secure online payment in seconds.</p>
+      <a href="#products" class="btn btn-primary">Start Shopping</a>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="products section" id="products">
+    <div class="container">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="product-grid" id="productGrid">
+        <!-- Products injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="how-it-works section" id="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Browse & Add</h3>
+          <p>Choose products and add them to your cart.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Checkout</h3>
+          <p>Enter your details and payment information.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Pay Online</h3>
+          <p>Securely settle payment and receive confirmation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="close-btn" id="closeCart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items injected by JS -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <strong id="cartTotal">HK$0.00</strong>
+      </div>
+      <button class="btn btn-primary btn-full" id="checkoutBtn" disabled>Proceed to Checkout</button>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Checkout Modal -->
+  <div class="modal" id="checkoutModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Checkout & Payment</h2>
+        <button class="close-btn" id="closeCheckout">✕</button>
+      </div>
+      <form id="checkoutForm">
+        <div class="form-section">
+          <h3>Contact Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" required placeholder="Chan Tai Man" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required placeholder="you@example.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" required placeholder="+852 9123 4567" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Shipping Address</h3>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" required placeholder="Flat A, 12/F, Example Building" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="district">District</label>
+              <input type="text" id="district" required placeholder="Kowloon" />
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" required value="Hong Kong" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Payment Details</h3>
+          <div class="form-group">
+            <label for="cardName">Name on Card</label>
+            <input type="text" id="cardName" required placeholder="CHAN TAI MAN" />
+          </div>
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" required placeholder="4242 4242 4242 4242" maxlength="19" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiry">Expiry (MM/YY)</label>
+              <input type="text" id="expiry" required placeholder="12/28" maxlength="5" />
+            </div>
+            <div class="form-group">
+              <label for="cvc">CVC</label>
+              <input type="text" id="cvc" required placeholder="123" maxlength="4" />
+            </div>
+          </div>
+          <p class="payment-note">🔒 This is a demo. Use test card: 4242 4242 4242 4242</p>
+        </div>
+
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div id="orderSummaryItems"></div>
+          <div class="summary-total">
+            <span>Total to Pay:</span>
+            <strong id="payTotal">HK$0.00</strong>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full" id="payBtn">
+          Pay Now
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal" id="successModal">
+    <div class="modal-content success-content">
+      <div class="success-icon">✅</div>
+      <h2>Payment Successful!</h2>
+      <p>Thank you for your purchase. Your order has been confirmed.</p>
+      <p class="order-id">Order ID: <strong id="orderId"></strong></p>
+      <button class="btn btn-primary" id="closeSuccess">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 CashBack Store Demo. Built for educational purposes. Not affiliated with HKTVmall.</p>
+      <p>Ready for GitHub • Payment simulation only</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
